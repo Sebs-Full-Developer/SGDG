@@ -10,7 +10,7 @@ import models.delete as borrar
 class Iniciar:
     def __init__(self) -> None:
         impt.imprimir_letra_por_letra("\n==============================\n\nProceso de SGDG Iniciado. \nConexión iniciada ....\nDatos de conexión recibidos.\n\n==============================\n\n", delay=0.01)
-        #time.sleep(3);
+        time.sleep(3);
         self.ejecutar_accion()
 
     def ejecutar_accion(self):
