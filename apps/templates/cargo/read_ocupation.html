@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Géneros - Sistema de Gobierno</title>
+    <title>Cargos - Sistema de Gobierno</title>
     <!-- Agregar enlace al CSS de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Enlace al CSS personalizado -->
@@ -32,44 +32,45 @@
     <div class="content" style="padding: 20px;">
         <div class="card shadow-sm">
             <div class="card-body">
-                <h2 class="text-center mb-4">Listado de Géneros</h2>
+                <h2 class="text-center mb-4">Listado de Cargos</h2>
 
                 <!-- Botones para Crear, Actualizar y Eliminar -->
                 <div class="d-flex justify-content-between mb-4">
+                    <!-- Botón de Eliminar en la izquierda -->
+                    <a href="{{ url_for('cargo.delete_ocupation') }}" class="btn btn-danger">Eliminar</a>
+
                     <!-- Botones de Crear y Actualizar en la derecha -->
                     <div>
-                        <a href="{{ url_for('genero.create_gender') }}" class="btn btn-success me-2">Crear</a>
+                        <a href="{{ url_for('cargo.create_ocupation') }}" class="btn btn-success me-2">Crear</a>
+                        <a href="{{ url_for('cargo.update_ocupation') }}" class="btn btn-primary">Actualizar</a>
                     </div>
                 </div>
 
-                <!-- Verificamos si hay géneros disponibles -->
-                {% if genres %}
+                <!-- Verificamos si hay cargos disponibles -->
+                {% if cargos %}
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Género ID</th>
-                                <th>Nombre del Género</th>
+                                <th>Cargo ID</th>
+                                <th>Nombre del Cargo</th>
                                 <th>Descripción</th>
                                 <th>Fecha de Creación</th>
-                                <th>Actualizar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Iterar a través de la lista de géneros y mostrar sus datos -->
-                            {% for genre in genres %}
+                            <!-- Iterar a través de la lista de cargos y mostrar sus datos -->
+                            {% for occupation in cargos %}
                                 <tr>
-                                    <td>{{ genre[0] }}</td>  <!-- genero_id -->
-                                    <td>{{ genre[1] }}</td>  <!-- nombre_genero -->
-                                    <td>{{ genre[2] }}</td>  <!-- descripcion -->
-                                    <td>{{ genre[3] }}</td>  <!-- fecha_creacion -->
-                                    <td><a href="{{ url_for('genero.update_gender', genero_id=genre[0]) }}" class="btn btn-primary">Actualizar</a></td>
-                                    <td><a href="{{ url_for('genero.delete_gender', genero_id=genre[0]) }}" class="btn btn-danger">Eliminar</a></td>
+                                    <td>{{ occupation[0] }}</td>  <!-- cargo_id -->
+                                    <td>{{ occupation[1] }}</td>  <!-- nombre_cargo -->
+                                    <td>{{ occupation[2] }}</td>  <!-- descripcion -->
+                                    <td>{{ occupation[3] }}</td>  <!-- fecha_creacion -->
                                 </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 {% else %}
-                    <p class="text-center">No hay géneros registrados en el sistema.</p>
+                    <p class="text-center">No hay cargos registrados en el sistema.</p>
                 {% endif %}
             </div>
         </div>

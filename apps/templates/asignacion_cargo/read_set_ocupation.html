@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Géneros - Sistema de Gobierno</title>
+    <title>Asignaciones de Cargo - Sistema de Gobierno</title>
     <!-- Agregar enlace al CSS de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Enlace al CSS personalizado -->
@@ -32,44 +32,47 @@
     <div class="content" style="padding: 20px;">
         <div class="card shadow-sm">
             <div class="card-body">
-                <h2 class="text-center mb-4">Listado de Géneros</h2>
+                <h2 class="text-center mb-4">Listado de Asignaciones de Cargo</h2>
 
                 <!-- Botones para Crear, Actualizar y Eliminar -->
                 <div class="d-flex justify-content-between mb-4">
+                    <!-- Botón de Eliminar en la izquierda -->
+                    <a href="{{ url_for('asignacion_cargo.delete_set_ocupation') }}" class="btn btn-danger">Eliminar</a>
+
                     <!-- Botones de Crear y Actualizar en la derecha -->
                     <div>
-                        <a href="{{ url_for('genero.create_gender') }}" class="btn btn-success me-2">Crear</a>
+                        <a href="{{ url_for('asignacion_cargo.create_set_ocupation') }}" class="btn btn-success me-2">Crear</a>
+                        <a href="{{ url_for('asignacion_cargo.update_set_ocupation') }}" class="btn btn-primary">Actualizar</a>
                     </div>
                 </div>
 
-                <!-- Verificamos si hay géneros disponibles -->
-                {% if genres %}
+                <!-- Verificamos si hay asignaciones de cargo disponibles -->
+                {% if asignaciones %}
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Género ID</th>
-                                <th>Nombre del Género</th>
-                                <th>Descripción</th>
+                                <th>Asignación ID</th>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>
+                                <th>Estado</th>
                                 <th>Fecha de Creación</th>
-                                <th>Actualizar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Iterar a través de la lista de géneros y mostrar sus datos -->
-                            {% for genre in genres %}
+                            <!-- Iterar a través de la lista de asignaciones de cargo y mostrar sus datos -->
+                            {% for assignment in asignaciones %}
                                 <tr>
-                                    <td>{{ genre[0] }}</td>  <!-- genero_id -->
-                                    <td>{{ genre[1] }}</td>  <!-- nombre_genero -->
-                                    <td>{{ genre[2] }}</td>  <!-- descripcion -->
-                                    <td>{{ genre[3] }}</td>  <!-- fecha_creacion -->
-                                    <td><a href="{{ url_for('genero.update_gender', genero_id=genre[0]) }}" class="btn btn-primary">Actualizar</a></td>
-                                    <td><a href="{{ url_for('genero.delete_gender', genero_id=genre[0]) }}" class="btn btn-danger">Eliminar</a></td>
+                                    <td>{{ assignment[0] }}</td>  <!-- asignacion_id -->
+                                    <td>{{ assignment[4] }}</td>  <!-- fecha_inicio -->
+                                    <td>{{ assignment[5] }}</td>  <!-- fecha_fin -->
+                                    <td>{{ assignment[6] }}</td>  <!-- entidad_id -->
+                                    <td>{{ assignment[7] }}</td>  <!-- fecha_creacion -->
                                 </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 {% else %}
-                    <p class="text-center">No hay géneros registrados en el sistema.</p>
+                    <p class="text-center">No hay asignaciones de cargo registradas en el sistema.</p>
                 {% endif %}
             </div>
         </div>
