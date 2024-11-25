@@ -20,6 +20,16 @@ def generate_token(username):
     conn = create_connection()
     cursor = conn.cursor()
 
+    '''[ ============================================================================================]
+    # Primero, intentamos borrar el token anterior (si existía) antes de insertar el nuevo
+    cursor.execute("DELETE FROM clave WHERE username=%s", (username,))
+    
+    # Insertamos el nuevo token en la tabla clave
+    cursor.execute("INSERT INTO clave (username, token) VALUES (%s, %s)", (username, token))
+    conn.commit()  # Confirmamos la transacción
+    conn.close()
+    [ ============================================================================================]'''
+
     # Construimos la consulta para borrar el token anterior utilizando f-string
     query_delete = f"DELETE FROM clave WHERE username = '{username}'"
     cursor.execute(query_delete)
