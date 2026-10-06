@@ -1,0 +1,12 @@
+/my_project
+    /app
+        /models       # Contendrá tus modelos de la base de datos
+        /views        # Contendrá tus plantillas (HTML) y front-end
+        /controllers  # Contendrá tus controladores para manejar las rutas
+        /services     # Contendrá los servicios de conexión a base de datos, JWT, etc.
+        /static       # Archivos estáticos como CSS, JS, imágenes
+        /templates    # Plantillas Jinja2 para las vistas
+    /config            # Configuración global de la app (como las claves secretas, URLs, etc.)
+    /tests             # Pruebas unitarias de la aplicación
+    app.py             # Archivo principal donde inicias Flask y configuras las rutas
+    requirements.txt   # Lista de dependencias
